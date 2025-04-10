@@ -9,7 +9,7 @@ from openpyxl import Workbook
 st.set_page_config(page_title="Stock Order App", page_icon="📦")
 
 # Optional logo
-st.image("data/logo.png", width=150)
+st.image("data/logo.png", width=400)
 st.title("Stock Order Generator")
 # App title
 
