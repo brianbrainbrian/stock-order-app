@@ -3,14 +3,14 @@ import pandas as pd
 from io import BytesIO
 from openpyxl import Workbook
 
-st.title("📦Stock Order Generator")
+
 
 # Set page title and favicon
 st.set_page_config(page_title="Stock Order App", page_icon="📦")
 
 # Optional logo
 # st.image("logo.png", width=150)
-
+st.title("Stock Order Generator")
 # App title
 
 
