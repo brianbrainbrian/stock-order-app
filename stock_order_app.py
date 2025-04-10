@@ -28,22 +28,37 @@ if user_name:
         )
         return df[df['Order Qty'] > 0]
 
-    def to_excel_bytes(df):
-        output = BytesIO()
-        wb = Workbook()
-        ws = wb.active
-        ws.title = "StockOrder"
-        ws.append(["Quantity", "ItemCode", "ItemName", "ItemType", "Weight", "WeightUoM"])
-        for _, row in df.iterrows():
-            ws.append([
-                row["Order Qty"],
-                row["Item Code"],
-                row["Item Name"],
-                "", "", ""
-            ])
-        wb.save(output)
-        output.seek(0)
-        return output
+def to_excel_bytes(df):
+    output = BytesIO()
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "StockOrder"
+    
+    # Header row
+    headers = ["Quantity", "ItemCode", "ItemName", "ItemType", "Weight", "WeightUoM"]
+    ws.append(headers)
+
+    # Data rows
+    for _, row in df.iterrows():
+        ws.append([
+            row["Order Qty"],
+            row["Item Code"],
+            row["Item Name"],
+            "", "", ""
+        ])
+
+    # Auto-adjust column widths
+    for col in ws.columns:
+        max_length = 0
+        column_letter = col[0].column_letter
+        for cell in col:
+            if cell.value:
+                max_length = max(max_length, len(str(cell.value)))
+        ws.column_dimensions[column_letter].width = max_length + 2
+
+    wb.save(output)
+    output.seek(0)
+    return output
 
     if soh_file:
         soh_df = pd.read_excel(soh_file)
