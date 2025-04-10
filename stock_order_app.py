@@ -33,7 +33,7 @@ if Path(logo_path).exists():
         </style>
         <div class="logo-container">
             <img src="data:image/png;base64,{encoded_logo}" width="200">
-            <h1 style='text-align: center;'>Stock Order Generator</h1>
+            <h1 style='text-align: center;'>Stock Order Assist</h1>
         </div>
         """,
         unsafe_allow_html=True
