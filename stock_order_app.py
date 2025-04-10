@@ -46,8 +46,8 @@ if soh_file:
 
     st.success("Files generated! Download below:")
 
-    st.download_button("📥 Download BRIAN stock order.xlsx", to_excel_bytes(in_catalogue),
+    st.download_button("📥 Download BRIAN LM stock order.xlsx", to_excel_bytes(in_catalogue),
                        "BRIAN stock order.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
-    st.download_button("📥 Download NOT IN CATALOGUE.xlsx", to_excel_bytes(not_in_catalogue),
+    st.download_button("📥 Download BRIAN manual pick.xlsx", to_excel_bytes(not_in_catalogue),
                        "NOT IN CATALOGUE.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
