@@ -4,6 +4,7 @@ from io import BytesIO
 from openpyxl import Workbook
 from pathlib import Path
 import base64
+from datetime import date
 
 # Set page title and favicon
 st.set_page_config(page_title="Stock Order App", page_icon="📦")
@@ -53,6 +54,7 @@ if st.session_state.user_name == "":
 
 if st.session_state.user_name:
     first_name = st.session_state.user_name.strip().split()[0].capitalize()
+    today_str = date.today().strftime("%d.%m.%y")
     st.success(f"Welcome, {first_name} 👋")
 
     # Load static files
@@ -119,16 +121,16 @@ if st.session_state.user_name:
             st.success("Files generated! Download below:")
 
             st.download_button(
-                label=f"📥 Download {first_name} LM stock order.xlsx",
+                label=f"📥 Download {first_name} {today_str} LM stock order.xlsx",
                 data=to_excel_bytes(in_catalogue),
-                file_name=f"{first_name} LM stock order.xlsx",
+                file_name=f"{first_name} {today_str} LM stock order.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
 
             st.download_button(
-                label=f"📥 Download {first_name} manual pick stock.xlsx",
+                label=f"📥 Download {first_name} {today_str} manual pick stock.xlsx",
                 data=to_excel_bytes(not_in_catalogue),
-                file_name=f"{first_name} manual pick stock.xlsx",
+                file_name=f"{first_name} {today_str} manual pick stock.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
 
