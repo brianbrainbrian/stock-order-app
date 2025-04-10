@@ -7,7 +7,7 @@ import base64
 from datetime import date
 
 # Set page title and favicon
-st.set_page_config(page_title="Stock Order App", page_icon="📦")
+st.set_page_config(page_title="Stock Order Assistant", page_icon="📦")
 
 # Convert image to base64 for embedding
 def get_base64_image(image_path):
