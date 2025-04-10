@@ -9,8 +9,42 @@ from openpyxl import Workbook
 st.set_page_config(page_title="Stock Order App", page_icon="📦")
 
 # Optional logo
-st.image("data/logo.png", width=400)
-st.title("Stock Order Generator")
+from pathlib import Path
+import base64
+
+# Convert image to base64 for embedding
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+# Load and embed logo if it exists
+logo_path = "data/logo.png"
+if Path(logo_path).exists():
+    encoded_logo = get_base64_image(logo_path)
+
+    st.markdown(
+        f"""
+        <style>
+        .logo-container {{
+            text-align: center;
+            margin-bottom: 10px;
+        }}
+
+        @media (prefers-color-scheme: dark) {{
+            .logo-container img {{
+                filter: invert(1);
+            }}
+        }}
+        </style>
+
+        <div class="logo-container">
+            <img src="data:image/png;base64,{encoded_logo}" width="200">
+            <h1 style='text-align: center;'>📦 Stock Order Generator</h1>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 # App title
 
 
